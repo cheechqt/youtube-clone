@@ -1,13 +1,41 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+@layer base {
+  body {
+    margin: 0;
+    background-color: #181818;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+  }
+  [type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.75rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #717171;
+    border-radius: 1rem;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+  .flex-start {
+    @apply flex items-center justify-start;
+  }
+  .flex-end {
+    @apply flex items-center justify-end;
+  }
 }
