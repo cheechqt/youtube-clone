@@ -1,5 +1,5 @@
-// export { covertRawViewsToString } from "./covertRawViewsToString";
-// export { parseVideoDuration } from "./parseVideoDuration";
-// export { timeSince } from "./timeSince";
+export { convertRawViewstoString } from "./convertRawViewsToString";
+export { parseVideoDuration } from "./parseVideoDuration";
+export { timeSince } from "./timeSince";
 export { parseData } from "./parseData";
-// export { parseRecommendedData } from "./parseRecommendedData";
+export { parseRecommendedData } from "./parseRecommendedData";
