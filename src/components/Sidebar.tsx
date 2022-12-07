@@ -137,7 +137,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="w-[280px] h-screen bg-[#0F0F0F] pr-5 overflow-auto pb-24 sidebar">
+    <div className="w-[280px] bg-[#0F0F0F] pr-5 overflow-auto pb-24 sidebar">
       <ul className="flex flex-col border-b border-[#272727]">
         {mainLinks.map(({ icon, name }) => {
           return (

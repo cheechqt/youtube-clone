@@ -19,7 +19,7 @@ export const getHomePageVideos = createAsyncThunk(
     } = await axios.get(
       `${YT_API_URL}/search?maxResults=20&q="lofi music"&key=${API_KEY}&part=snippet&type=video`
     );
-    console.log({ items, nextPageTokenFromState, nextPageToken });
+    // console.log({ items, nextPageTokenFromState, nextPageToken });
     const parsedData: HomePageVideos[] = await parseData(items);
     return { parsedData: [...videos, ...parsedData], nextPageToken };
   }
