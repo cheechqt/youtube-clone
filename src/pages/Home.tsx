@@ -25,11 +25,8 @@ export default function Home() {
 
   return (
     <div className="max-h-screen overflow-hidden">
-      <div className="h-[7.5vh]">
-        <Navbar />
-      </div>
-      <div className="flex h-[92.5vh]">
-        <Sidebar />
+      <Navbar />
+      <div className="flex h-full overflow-hidden">
         {videos.length ? (
           <InfiniteScroll
             dataLength={videos.length}
@@ -38,7 +35,7 @@ export default function Home() {
             loader={<Spinner />}
             height={650}
           >
-            <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
+            <div className="grid gap-y-14 grid-cols-1 p-8 w-full">
               {videos.map((item: HomePageVideos) => {
                 console.log(item);
                 return <Card data={item} key={item.videoId} />;

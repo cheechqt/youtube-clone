@@ -1,22 +1,3 @@
-//
-// {
-//   menuList.map(({ title, icon }, index) => {
-//     return (
-//       <>
-//         <li
-//           key={index}
-//           className="flex-start gap-9 pl-2.5 pr-7 py-3 rounded-xl hover:bg-[#272727] w-full text-2xl"
-//         >
-//           {icon}
-//           <span className="text-base">{title}</span>
-//         </li>
-//         {index === 2 && <hr className="border w-full border-red-500" />}
-//       </>
-//     );
-//   });
-// }
-
-import React from "react";
 import {
   MdHomeFilled,
   MdOutlineSlowMotionVideo,
@@ -34,7 +15,9 @@ import {
 } from "react-icons/md";
 import { TbMusic, TbDeviceGamepad2 } from "react-icons/tb";
 import { FaRegCompass } from "react-icons/fa";
-import { GiFilmStrip } from "react-icons/gi";
+import { GiFilmStrip, GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
+import Logo from "components/Logo";
 
 export default function Sidebar() {
   const mainLinks = [
@@ -137,86 +120,97 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="w-[280px] bg-[#0F0F0F] pr-5 overflow-auto pb-24 sidebar">
-      <ul className="flex flex-col border-b border-[#272727]">
-        {mainLinks.map(({ icon, name }) => {
-          return (
-            <li
-              key={name}
-              className={`pl-6 py-3 hover:bg-[#272727] rounded-xl`}
-            >
-              <a href="#" className="flex items-center gap-5">
-                {icon}
-                <span className="text-sm tracking-wider">{name}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className="flex flex-col border-b border-[#272727]">
-        {secondaryLinks.map(({ icon, name }) => {
-          return (
-            <li
-              key={name}
-              className={`pl-6 py-3 hover:bg-[#272727] rounded-xl`}
-            >
-              <a href="#" className="flex items-center gap-5">
-                {icon}
-                <span className="text-sm tracking-wider">{name}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className="flex flex-col border-b border-[#272727]">
-        {subscriptionLinks.map(({ icon, name }) => {
-          return (
-            <li
-              key={name}
-              className={`pl-6 py-3 hover:bg-[#272727] rounded-xl`}
-            >
-              <a href="#" className="flex items-center gap-5">
-                {icon}
-                <span className="text-sm tracking-wider">{name}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className="flex flex-col border-b border-[#272727]">
-        {helpLinks.map(({ icon, name }) => {
-          return (
-            <li
-              key={name}
-              className={`pl-6 py-3 hover:bg-[#272727] rounded-xl`}
-            >
-              <a href="#" className="flex items-center gap-5">
-                {icon}
-                <span className="text-sm tracking-wider">{name}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className="flex gap-2 flex-wrap text-sm pl-6 p-4 text-zinc-400">
-        {textLinks[0].map((name) => {
-          return (
-            <li key={name}>
-              <a href="#">{name}</a>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className="flex gap-2 flex-wrap text-sm pl-6 p-4 text-zinc-400">
-        {textLinks[1].map((name) => {
-          return (
-            <li key={name}>
-              <a href="#">{name}</a>
-            </li>
-          );
-        })}
-      </ul>
-      <span className="pl-6 text-sm text-zinc-400">&copy; 2022 Google</span>
+    <div>
+      <div className="absolute z-50 w-[280px] h-screen bg-[#0F0F0F] pr-5 overflow-auto pb-24 sidebar">
+        <div className="flex-center gap-2 xl:mr-12 mr-24">
+          <button className="flex-center p-2 rounded-full hover:bg-zinc-700">
+            <GiHamburgerMenu />
+          </button>
+          <Link to="/">
+            <Logo />
+          </Link>
+        </div>
+        <ul className="flex flex-col border-b border-[#272727]">
+          {mainLinks.map(({ icon, name }) => {
+            return (
+              <li
+                key={name}
+                className={`pl-6 py-3 hover:bg-[#272727] rounded-xl`}
+              >
+                <a href="#" className="flex items-center gap-5">
+                  {icon}
+                  <span className="text-sm tracking-wider">{name}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="flex flex-col border-b border-[#272727]">
+          {secondaryLinks.map(({ icon, name }) => {
+            return (
+              <li
+                key={name}
+                className={`pl-6 py-3 hover:bg-[#272727] rounded-xl`}
+              >
+                <a href="#" className="flex items-center gap-5">
+                  {icon}
+                  <span className="text-sm tracking-wider">{name}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="flex flex-col border-b border-[#272727]">
+          {subscriptionLinks.map(({ icon, name }) => {
+            return (
+              <li
+                key={name}
+                className={`pl-6 py-3 hover:bg-[#272727] rounded-xl`}
+              >
+                <a href="#" className="flex items-center gap-5">
+                  {icon}
+                  <span className="text-sm tracking-wider">{name}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="flex flex-col border-b border-[#272727]">
+          {helpLinks.map(({ icon, name }) => {
+            return (
+              <li
+                key={name}
+                className={`pl-6 py-3 hover:bg-[#272727] rounded-xl`}
+              >
+                <a href="#" className="flex items-center gap-5">
+                  {icon}
+                  <span className="text-sm tracking-wider">{name}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="flex gap-2 flex-wrap text-sm pl-6 p-4 text-zinc-400">
+          {textLinks[0].map((name) => {
+            return (
+              <li key={name}>
+                <a href="#">{name}</a>
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="flex gap-2 flex-wrap text-sm pl-6 p-4 text-zinc-400">
+          {textLinks[1].map((name) => {
+            return (
+              <li key={name}>
+                <a href="#">{name}</a>
+              </li>
+            );
+          })}
+        </ul>
+        <span className="pl-6 text-sm text-zinc-400">&copy; 2022 Google</span>
+      </div>
+      <div className="absolute w-full h-screen z-40 bg-red-900 bg-opacity-20 overflow-hidden"></div>
     </div>
   );
 }
