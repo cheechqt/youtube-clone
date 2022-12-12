@@ -1,4 +1,4 @@
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { InitialState } from "Types";
 import { getHomePageVideos } from "store/reducers/getHomePageVideos";
 
@@ -8,7 +8,9 @@ const initialState: InitialState = {
   searchTerm: "",
   searchResults: [],
   nextPageToken: null,
-  recommendedVideos: []
+  recommendedVideos: [],
+  isSidebarOpen: false,
+  isSmallSearchbarOpen: false
 };
 
 const YoutubeSlice = createSlice({
@@ -18,6 +20,12 @@ const YoutubeSlice = createSlice({
     clearVideos: (state) => {
       state.videos = [];
       state.nextPageToken = null;
+    },
+    toggleSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    },
+    toggleSmallSearchbar: (state) => {
+      state.isSmallSearchbarOpen = !state.isSmallSearchbarOpen;
     }
   },
   extraReducers: (builder) => {
@@ -34,7 +42,8 @@ export const store = configureStore({
   }
 });
 
-export const { clearVideos } = YoutubeSlice.actions;
+export const { clearVideos, toggleSidebar, toggleSmallSearchbar } =
+  YoutubeSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

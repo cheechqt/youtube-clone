@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Navbar from "components/Navbar";
-import Sidebar from "components/Sidebar";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { getHomePageVideos } from "store/reducers/getHomePageVideos";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -24,20 +23,20 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <div className="max-h-screen overflow-hidden">
+    <div className="h-screen overflow-hidden">
       <Navbar />
-      <div className="flex h-full overflow-hidden">
+      <div className="flex h-screen overflow-hidden">
         {videos.length ? (
           <InfiniteScroll
             dataLength={videos.length}
             next={() => dispatch(getHomePageVideos(true))}
             hasMore={videos.length < 500}
             loader={<Spinner />}
-            height={650}
+            style={{ height: "100vh" }}
           >
-            <div className="grid gap-y-14 grid-cols-1 p-8 w-full">
+            <div className="grid gap-y-8 gap-x-6 grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 p-8 w-screen">
               {videos.map((item: HomePageVideos) => {
-                console.log(item);
+                // console.log(item);
                 return <Card data={item} key={item.videoId} />;
               })}
             </div>
