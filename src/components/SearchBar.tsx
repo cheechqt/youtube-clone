@@ -4,26 +4,61 @@ import {
   AiOutlineArrowLeft
 } from "react-icons/ai";
 import { TiMicrophone } from "react-icons/ti";
-import { toggleSmallSearchbar } from "store";
+import { useLocation, useNavigate } from "react-router-dom";
+import { changeSearchTerm, clearVideos, toggleSmallSearchbar } from "store";
 import { useAppDispatch, useAppSelector } from "store/hooks";
+import { getSearchPageVideos } from "store/reducers/getSearchPageVideos";
 import useWindowWidth from "utils/useWindowWidth";
 
 const SearchBarInput = () => {
+  const dispatch = useAppDispatch();
+  const searchTerm = useAppSelector((state) => state.ytApp.searchTerm);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (location.pathname !== "/search") {
+      navigate("/search");
+    } else {
+      dispatch(clearVideos());
+      dispatch(getSearchPageVideos(false));
+    }
+  };
+
   return (
-    <>
+    <form
+      className="flex-between w-full"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch();
+      }}
+    >
       <div className="flex-center text-3xl border border-[#2e2e2e] rounded-l-3xl py-1 h-full w-full max-w-[520px] group-focus-within:border-blue-500">
         <AiOutlineSearch className="hidden group-focus-within:block ml-4" />
         <input
           className="w-full bg-transparent outline-none appearance-none text-base py-1 pl-4"
           placeholder="Search"
           type="search"
+          value={searchTerm}
+          onChange={(e) => dispatch(changeSearchTerm(e.target.value))}
         />
-        <AiOutlineClose className="cursor-pointer hidden group-focus-within:block mx-3" />
+        {searchTerm && (
+          <AiOutlineClose
+            className="cursor-pointer mx-3 group-focus-within:scale-105"
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(changeSearchTerm(""));
+            }}
+          />
+        )}
       </div>
-      <div className="py-2 pl-5 pr-4 bg-[#222222] border-l-transparent border border-[#1e2e2e] rounded-r-3xl">
+      <button
+        type="submit"
+        className="py-2 pl-5 pr-4 bg-[#222222] border-l-transparent border border-[#1e2e2e] rounded-r-3xl"
+      >
         <AiOutlineSearch />
-      </div>
-    </>
+      </button>
+    </form>
   );
 };
 

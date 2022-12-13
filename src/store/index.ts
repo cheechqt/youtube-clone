@@ -1,6 +1,7 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { InitialState } from "Types";
 import { getHomePageVideos } from "store/reducers/getHomePageVideos";
+import { getSearchPageVideos } from "store/reducers/getSearchPageVideos";
 
 const initialState: InitialState = {
   videos: [],
@@ -21,6 +22,9 @@ const YoutubeSlice = createSlice({
       state.videos = [];
       state.nextPageToken = null;
     },
+    changeSearchTerm: (state, action: PayloadAction<string>) => {
+      state.searchTerm = action.payload;
+    },
     toggleSidebar: (state) => {
       state.isSidebarOpen = !state.isSidebarOpen;
     },
@@ -33,6 +37,10 @@ const YoutubeSlice = createSlice({
       state.videos = action.payload.parsedData;
       state.nextPageToken = action.payload.nextPageToken;
     });
+    builder.addCase(getSearchPageVideos.fulfilled, (state, action) => {
+      state.videos = action.payload.parsedData;
+      state.nextPageToken = action.payload.nextPageToken;
+    });
   }
 });
 
@@ -42,8 +50,12 @@ export const store = configureStore({
   }
 });
 
-export const { clearVideos, toggleSidebar, toggleSmallSearchbar } =
-  YoutubeSlice.actions;
+export const {
+  clearVideos,
+  changeSearchTerm,
+  toggleSidebar,
+  toggleSmallSearchbar
+} = YoutubeSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
