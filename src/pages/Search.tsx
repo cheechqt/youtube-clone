@@ -3,16 +3,15 @@ import SearchCard from "components/SearchCard";
 import Spinner from "components/Spinner";
 import { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearVideos } from "store";
-import { useAppSelector } from "store/hooks";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 import { getSearchPageVideos } from "store/reducers/getSearchPageVideos";
 import { HomePageVideos } from "Types";
 
 export default function Search() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const videos = useAppSelector((state) => state.ytApp.videos);
   const searchTerm = useAppSelector((state) => state.ytApp.searchTerm);
 
@@ -27,7 +26,7 @@ export default function Search() {
   return (
     <div className="h-screen overflow-hidden">
       <Navbar />
-      <div className="flex h-scren">
+      <div className="flex h-screen">
         {videos.length ? (
           <div className="py-8 pl-8 flex flex-col gap-5 w-full">
             <InfiniteScroll
@@ -35,11 +34,11 @@ export default function Search() {
               next={() => dispatch(getSearchPageVideos(true))}
               hasMore={videos.length < 500}
               loader={<Spinner />}
-              style={{ height: "100vh" }}
+              style={{ height: "86vh" }}
             >
               {videos.map((item: HomePageVideos) => {
                 return (
-                  <div className="my-6">
+                  <div className="py-3 pr-3">
                     <SearchCard data={item} key={item.videoId} />
                   </div>
                 );

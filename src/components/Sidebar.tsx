@@ -123,7 +123,6 @@ const textLinks = [
 export default function Sidebar() {
   const dispatch = useAppDispatch();
   const handleToggleSidebar = () => dispatch(toggleSidebar());
-
   const isSidebarOpen = useAppSelector((state) => state.ytApp.isSidebarOpen);
 
   return (
@@ -225,9 +224,11 @@ export default function Sidebar() {
             </span>
           </div>
         </div>
-        <div className="absolute w-full h-screen z-40 bg-black bg-opacity-20 overflow-hidden"></div>
+        <div
+          className="absolute w-full h-screen z-40 bg-black bg-opacity-20 overflow-hidden"
+          onClick={handleToggleSidebar}
+        ></div>
       </div>
     )
   );
-  return <></>;
 }

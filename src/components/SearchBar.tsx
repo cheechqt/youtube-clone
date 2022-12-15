@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   AiOutlineSearch,
   AiOutlineClose,
@@ -25,12 +26,15 @@ const SearchBarInput = () => {
     }
   };
 
+  const handleToggleSmallSearchbar = () => dispatch(toggleSmallSearchbar());
+
   return (
     <form
-      className="flex-between w-full"
+      className="flex-center w-full"
       onSubmit={(e) => {
         e.preventDefault();
         handleSearch();
+        handleToggleSmallSearchbar();
       }}
     >
       <div className="flex-center text-3xl border border-[#2e2e2e] rounded-l-3xl py-1 h-full w-full max-w-[520px] group-focus-within:border-blue-500">
@@ -102,8 +106,8 @@ const SearchBar = () => {
         </div>
       </div>
       {/*modal - small searchbar*/}
-      {isSmallSearchbarOpen && (
-        <div className="absolute z-[60] w-full flex flex-nowrap bg-[#0f0f0f] py-2 pr-8">
+      {isSmallSearchbarOpen && isSmallScreen && (
+        <div className="absolute z-[49] w-full flex flex-nowrap bg-[#0f0f0f] py-2 pr-8">
           <button
             onClick={handleToggleSmallSearchbar}
             className="rounded-full p-2.5 hover:bg-[#303030]"
