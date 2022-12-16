@@ -52,6 +52,7 @@ const SearchBarInput = () => {
             onClick={(e) => {
               e.preventDefault();
               dispatch(changeSearchTerm(""));
+              handleToggleSmallSearchbar();
             }}
           />
         )}
