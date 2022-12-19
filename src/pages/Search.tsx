@@ -1,4 +1,3 @@
-import Navbar from "components/Navbar";
 import SearchCard from "components/SearchCard";
 import Spinner from "components/Spinner";
 import { useEffect } from "react";
@@ -24,31 +23,28 @@ export default function Search() {
   }, [dispatch, navigate, searchTerm]);
 
   return (
-    <div className="h-screen overflow-hidden">
-      <Navbar />
-      <div className="flex h-screen">
-        {videos.length ? (
-          <div className="py-8 pl-8 flex flex-col gap-5 w-full">
-            <InfiniteScroll
-              dataLength={videos.length}
-              next={() => dispatch(getSearchPageVideos(true))}
-              hasMore={videos.length < 500}
-              loader={<Spinner />}
-              style={{ height: "86vh" }}
-            >
-              {videos.map((item: HomePageVideos) => {
-                return (
-                  <div className="py-3 pr-3">
-                    <SearchCard data={item} key={item.videoId} />
-                  </div>
-                );
-              })}
-            </InfiniteScroll>
-          </div>
-        ) : (
-          <Spinner />
-        )}
-      </div>
+    <div className="flex">
+      {videos.length ? (
+        <div className="pb-8 pl-8 flex flex-col gap-5 w-full">
+          <InfiniteScroll
+            dataLength={videos.length}
+            next={() => dispatch(getSearchPageVideos(true))}
+            hasMore={videos.length < 500}
+            loader={<Spinner />}
+            style={{ height: "86vh" }}
+          >
+            {videos.map((item: HomePageVideos) => {
+              return (
+                <div className="py-3 pr-3">
+                  <SearchCard data={item} key={item.videoId} />
+                </div>
+              );
+            })}
+          </InfiniteScroll>
+        </div>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 }

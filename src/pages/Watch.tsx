@@ -27,5 +27,17 @@ export default function Watch() {
     if (currentPlaying && id) dispatch(getRecommendedVideos(id));
   }, [currentPlaying, dispatch, id]);
 
-  return <>Watch</>;
+  return (
+    <div className="h-full w-full px-4">
+      <iframe
+        width="100%"
+        height="60%"
+        src={`https:youtube.com/embed/${id}?autoplay=1`}
+        title="YouTube video player"
+        frameBorder="0"
+        allowFullScreen
+        allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></iframe>
+    </div>
+  );
 }
