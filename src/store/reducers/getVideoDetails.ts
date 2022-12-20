@@ -42,7 +42,7 @@ const parseData = async (item: {
       ]
     }
   } = await axios.get(
-    `${YT_API_URL}/channels?part=snippet,statistics=${item.snippet.channelId}&key=${API_KEY}`
+    `${YT_API_URL}/channels?part=snippet,statistics&id=${item.snippet.channelId}&key=${API_KEY}`
   );
 
   return {
