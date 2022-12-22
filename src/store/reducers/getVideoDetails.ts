@@ -22,7 +22,7 @@ const parseData = async (item: {
     channelId: string;
     title: string;
     description: string;
-    published: Date;
+    publishedAt: Date;
     channelTitle: string;
   };
   id: string;
@@ -51,7 +51,7 @@ const parseData = async (item: {
     videoDescription: item.snippet.description,
     videoViews: parseInt(item.statistics.viewCount).toLocaleString(),
     videoLikes: convertRawViewstoString(item.statistics.likeCount),
-    videoAge: timeSince(new Date(item.snippet.published)),
+    videoAge: timeSince(new Date(item.snippet.publishedAt)),
     channelInfo: {
       id: item.snippet.channelId,
       image: channelImage,
