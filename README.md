@@ -2,8 +2,8 @@
 
 ## Quick Review
 
-| ![Example](https://github.com/cheechqt/discord-redux-tailwind/blob/main/example1.gif "Desktop example") | ![Example](https://github.com/cheechqt/discord-redux-tailwind/blob/main/example2.gif "Mobile Example") |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| ![Example](https://github.com/cheechqt/youtube-clone/blob/main/assets/deskExa.gif "Desktop example") | ![Example](https://github.com/cheechqt/youtube-clone/blob/main/assets/mobileExa.gif "Mobile Example") |
+| ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 
 ## Ссылки
 
